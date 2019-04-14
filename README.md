@@ -8,7 +8,7 @@ Docker container allowing you to build and test your Python project. _This conta
 
 The following tools are embedded in the container:
 
-- Python: _3.6.7_
+- Python: _3.6.7_ (`groovytron/python:3.6`) or _3.7.3_ (`groovytron/python:3.7`)
 - [Pipenv](https://github.com/pypa/pipenv): _2018.11.26_
 
 ## Use the container
@@ -23,8 +23,8 @@ To run the container and open a bash in your python project run the following co
 
 ### Commands configurations
 
-- The python interpreter is usable through the `python` or `python3` command
-- You can install python packages using either `pip` or `pip3`
+- The python interpreter is usable through the `python`
+- You can install python packages using either `pip`
 - `pipenv` is installed in the container if you want to manage your dependencies using that tool
 
 **Note that as the `PIPENV_VENV_IN_PROJECT` environment variable is set, `pipenv` will create the virtual environment in a folder called `.venv` in your project directory.**
