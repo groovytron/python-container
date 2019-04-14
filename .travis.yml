@@ -3,6 +3,10 @@ sudo: required
 services:
   - docker
 
+env:
+  - PYTHON_VERSION=3.6
+  - PYTHON_VERSION=3.7
+
 script:
-  - make build
-  - make test
+  - make "$PYTHON_VERSION"
+  - make "test-$PYTHON_VERSION"
