@@ -9,7 +9,7 @@ env:
 
 script:
   - make "$PYTHON_VERSION"
-  - |
+  - >
     docker run
     -it
     --user=dev
