@@ -14,6 +14,5 @@ script:
     -it
     --user=dev
     -p 8000:8000
-    -v "$(pwd):/var/www/app"
-    --entrypoint /var/www/app/test.sh
+    --entrypoint PROJECT_NAME=testsite && pipenv install django && pipenv run django-admin startproject "$PROJECT_NAME"
     "python-container:$PYTHON_VERSION"
