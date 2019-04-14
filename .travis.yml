@@ -9,4 +9,11 @@ env:
 
 script:
   - make "$PYTHON_VERSION"
-  - make "test-$PYTHON_VERSION"
+  - |
+    docker run
+    -it
+    --user=dev
+    -p 8000:8000
+    -v "$(pwd):/var/www/app"
+    --entrypoint /var/www/app/test.sh
+    "python-container:$PYTHON_VERSION"
