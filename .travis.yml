@@ -12,7 +12,7 @@ script:
   - >
     docker run
     -it
-    --user=dev
     -p 8000:8000
-    --entrypoint PROJECT_NAME=testsite && pipenv install django && pipenv run django-admin startproject "$PROJECT_NAME"
+    -v "$(pwd):/var/www/app"
+    --entrypoint /var/www/app/test.sh
     "python-container:$PYTHON_VERSION"
