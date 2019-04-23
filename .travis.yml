@@ -4,8 +4,11 @@ services:
   - docker
 
 env:
-  - PYTHON_VERSION=3.6
-  - PYTHON_VERSION=3.7
+  global:
+    - DJANGO_PROJECT_NAME=testsite
+  matrix:
+    - PYTHON_VERSION=3.6
+    - PYTHON_VERSION=3.7
 
 script:
   - make "$PYTHON_VERSION"
@@ -14,4 +17,4 @@ script:
     -it
     --user dev
     "python-container:$PYTHON_VERSION"
-    bash -c "PROJECT_NAME=testsite && pipenv install django && pipenv run django-admin startproject \"$PROJECT_NAME\""
+    bash -c "pipenv install django && pipenv run django-admin startproject $DJANGO_PROJECT_NAME"
