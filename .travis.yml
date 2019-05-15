@@ -11,7 +11,7 @@ env:
     - PYTHON_VERSION=3.7
 
 script:
-  - make "$PYTHON_VERSION"
+  - make "python$PYTHON_VERSION"
   - chmod --recursive a+wrx .
   - >
     docker run

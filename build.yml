@@ -1,0 +1,24 @@
+# This file is only used to build multiple images
+version: '3'
+
+services:
+  python3.7:
+    image: ${COMPOSE_BUILD_NAME}:3.7
+    build:
+      dockerfile: 3.7/Dockerfile
+      context: .
+      args:
+        - BUILD_DATE=$BUILD_DATE
+        - PIPENV_VERSION=2018.11.26
+        - PYTHON_VERSION=3.7
+        - VCS_REF=$VCS_REF
+  python3.6:
+    image: ${COMPOSE_BUILD_NAME}:3.6
+    build:
+      dockerfile: 3.6/Dockerfile
+      context: .
+      args:
+        - BUILD_DATE=$BUILD_DATE
+        - PIPENV_VERSION=2018.11.26
+        - PYTHON_VERSION=3.6
+        - VCS_REF=$VCS_REF

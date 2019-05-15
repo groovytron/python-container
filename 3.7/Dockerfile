@@ -2,7 +2,7 @@
 
 FROM ubuntu:bionic
 
-ARG PYTHON_VERSION=3.7
+ARG PYTHON_VERSION
 ARG PIPENV_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -12,22 +12,19 @@ ENV PIPENV_VENV_IN_PROJECT=yes
 
 RUN apt-get update \
     && apt-get upgrade --quiet --yes \
-    && apt-get install software-properties-common --yes --quiet \
     && apt-get update --quiet \
     && apt-get install --quiet --yes \
         curl \
         locales \
-        python3-pip \
+        python${PYTHON_VERSION} \
+        python3-distutils \
         software-properties-common \
         tzdata \
         unzip \
-    && add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get update --quiet \
-    && apt-get install python${PYTHON_VERSION} --yes --quiet \
-    && curl --silent https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION} \
     && apt-get autoremove --quiet --yes \
     && apt-get clean \
-    && pip install pipenv
+    && curl --silent https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION} \
+    && pip3 install pipenv==${PIPENV_VERSION}
 
 # Set the locale
 RUN locale-gen en_US
@@ -42,6 +39,7 @@ RUN ln -s /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 
 # Create symbolic link to Python 3 binaries
 RUN ln -sf $(which python${PYTHON_VERSION}) ${PYTHON_BIN}
+RUN ln -sf $(which python${PYTHON_VERSION}) ${PYTHON_BIN}3
 
 EXPOSE 8000
 
@@ -53,8 +51,9 @@ RUN groupadd --gid 1000 dev \
   && useradd --uid 1000 --gid dev --shell /bin/bash --create-home dev
 
 # Fix permissions issues
-RUN chmod -R a+wrx /var/www/app
-RUN chmod -R a+wrx ${PYTHON_BIN}
+RUN chmod --recursive a+wrx /var/www/app
+RUN chmod a+wrx ${PYTHON_BIN}
+RUN chmod a+wrx ${PYTHON_BIN}3
 
 # Label schema related variables and metadata
 ARG BUILD_DATE
@@ -62,6 +61,17 @@ ARG VCS_REF
 
 LABEL maintainer="Julien M'Poy <julien.mpoy@gmail.com>" \
     org.label-schema.build-date=${BUILD_DATE} \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.url="https://github.com/groovytron/python-container" \
     org.label-schema.vcs-ref=${VCS_REF} \
     org.label-schema.vcs-url="https://github.com/groovytron/python-container" \
-    org.label-schema.schema-version="1.0"
+    org.opencontainers.image.authors="Julien M'Poy <julien.mpoy@gmail.com>" \
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.description="Python container for local Python web development" \
+    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.revision=${VCS_REF} \
+    org.opencontainers.image.source="https://github.com/groovytron/python-container" \
+    org.opencontainers.image.title="Python Container" \
+    org.opencontainers.image.url="https://github.com/groovytron/python-container" \
+    org.opencontainers.image.vendor="Julien M'Poy <julien.mpoy@gmail.com>" \
+    org.opencontainers.image.version="3.7"
