@@ -15,6 +15,7 @@ script:
   - >
     docker run
     -it
+    --volume $(pwd):/var/www/app:rw
     --user dev
     "python-container:$PYTHON_VERSION"
-    bash -c "pipenv install django && pipenv run django-admin startproject $DJANGO_PROJECT_NAME"
+    bash ./test.sh
