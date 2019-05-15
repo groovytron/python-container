@@ -7,8 +7,8 @@ Docker container allowing you to build and test your Python project. _This conta
 
 ## Supported tags and respective `Dockerfile` links
 
-- `3.7` ([3.7/Dockerfile](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/3.7/Dockerfile))
-- `3.6` ([3.6/Dockerfile](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/3.6/Dockerfile))
+- `3.7` ([3.7/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.7/Dockerfile))
+- `3.6` ([3.6/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.6/Dockerfile))
 
 [`pipenv`](https://github.com/pypa/pipenv) is installed in every image to make Python dependencies installation easier.
 
@@ -41,8 +41,8 @@ Pull requests, bug reports, and feature requests are welcome.
 If you want to improve one of these images, your will need the following software installed on your system:
 
 - `docker`
-- `docker-compose` (if you want to build images using the file [build.yml](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/build.yml))
-- `make` (if you want to build images using the file [build.yml](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/build.yml) and abstract from it with the [Makefile](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/Makefile))
+- `docker-compose` (if you want to build images using the file [build.yml](https://github.com/groovytron/python-container/blob/master/build.yml))
+- `make` (if you want to build images using the file [build.yml](https://github.com/groovytron/python-container/blob/master/build.yml) and abstract from it with the [Makefile](https://github.com/groovytron/python-container/blob/master/Makefile))
 
 Once you have the above softwares installed, run `make python3.7` to build the `python3.7` image.
 To build all the images, run `make all`.
