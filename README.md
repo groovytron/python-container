@@ -1,15 +1,16 @@
-# Docker container for Python web development
+# Python container (Docker container for Python web development)
 
 [![Build Status](https://travis-ci.org/groovytron/python-container.svg?branch=master)](https://travis-ci.org/groovytron/python-container)
 
 Docker container allowing you to build and test your Python project. _This container mainly targets Python web project developments but you can try to make it work with your project even if your project is not using web technologies_.
 
-## Softwares embedded in the container
 
-The following tools are embedded in the container:
+## Supported tags and respective `Dockerfile` links
 
-- Python: _3.6.7_ (`groovytron/python:3.6`) or _3.7.3_ (`groovytron/python:3.7`)
-- [Pipenv](https://github.com/pypa/pipenv): _2018.11.26_
+- `3.7` ([3.7/Dockerfile](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/3.7/Dockerfile))
+- `3.6` ([3.6/Dockerfile](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/3.6/Dockerfile))
+
+[`pipenv`](https://github.com/pypa/pipenv) is installed in every image to make Python dependencies installation easier.
 
 ## Use the container
 
@@ -25,8 +26,28 @@ To run the container and open a bash in your python project run the following co
 
 ### Commands configurations
 
-- The python interpreter is usable through the `python`
-- You can install python packages using either `pip`
+- The python interpreter is usable through the `python` or `python3`
+- You can install python packages using either `pip` or `pip3`
 - `pipenv` is installed in the container if you want to manage your dependencies using that tool
 
 **Note that as the `PIPENV_VENV_IN_PROJECT` environment variable is set, `pipenv` will create the virtual environment in a folder called `.venv` in your project directory.**
+
+## Contributing
+
+Pull requests, bug reports, and feature requests are welcome.
+
+### Develop locally
+
+If you want to improve one of these images, your will need the following software installed on your system:
+
+- `docker`
+- `docker-compose` (if you want to build images using the file [build.yml](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/build.yml))
+- `make` (if you want to build images using the file [build.yml](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/build.yml) and abstract from it with the [Makefile](https://github.com/groovytron/python-container/blob/e63080ceb488025d83f58aa234a40ebcc9589b7f/Makefile))
+
+Once you have the above softwares installed, run `make python3.7` to build the `python3.7` image.
+To build all the images, run `make all`.
+If you want to clean your builds, simply run `make clean`.
+
+## License
+
+MIT License. See the LICENSE file.
