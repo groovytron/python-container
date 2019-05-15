@@ -12,7 +12,7 @@ env:
 
 script:
   - make "$PYTHON_VERSION"
-  - chmod -R a+wrx
+  - chmod --recursive a+wrx .
   - >
     docker run
     -it
