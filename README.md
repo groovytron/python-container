@@ -7,7 +7,7 @@ Docker container allowing you to build and test your Python project. _This conta
 
 ## Supported tags and respective `Dockerfile` links
 
-- `3.7` ([3.7/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.7/Dockerfile))
+- `3.7`, `latest` ([3.7/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.7/Dockerfile))
 - `3.6` ([3.6/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.6/Dockerfile))
 
 [`pipenv`](https://github.com/pypa/pipenv) is installed in every image to make Python dependencies installation easier.
