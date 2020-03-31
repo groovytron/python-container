@@ -2,6 +2,17 @@
 version: '3'
 
 services:
+  python3.8:
+    image: ${COMPOSE_BUILD_NAME}:3.8
+    build:
+      dockerfile: 3.8/Dockerfile
+      context: .
+      args:
+        - BUILD_DATE=$BUILD_DATE
+        - PIPENV_VERSION=2018.11.26
+        - POETRY_VERSION=1.0.5
+        - PYTHON_VERSION=3.8
+        - VCS_REF=$VCS_REF
   python3.7:
     image: ${COMPOSE_BUILD_NAME}:3.7
     build:
@@ -10,6 +21,7 @@ services:
       args:
         - BUILD_DATE=$BUILD_DATE
         - PIPENV_VERSION=2018.11.26
+        - POETRY_VERSION=1.0.5
         - PYTHON_VERSION=3.7
         - VCS_REF=$VCS_REF
   python3.6:
@@ -20,5 +32,6 @@ services:
       args:
         - BUILD_DATE=$BUILD_DATE
         - PIPENV_VERSION=2018.11.26
+        - POETRY_VERSION=1.0.5
         - PYTHON_VERSION=3.6
         - VCS_REF=$VCS_REF

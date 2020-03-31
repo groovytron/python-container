@@ -1,6 +1,6 @@
 BUILD_NAME=python
 COMPOSE_BUILD_NAME=python-container
-VERSIONS=3.7 3.6
+VERSIONS=3.8 3.7 3.6
 ALL=$(addprefix python,$(VERSIONS))
 VCS_REF="$(shell git rev-parse HEAD)"
 BUILD_DATE="$(shell date -u +"%Y-%m-%dT%H:%m:%SZ")"

@@ -43,7 +43,6 @@ RUN ln -s /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 # Create symbolic link to Python 3 binaries
 RUN ln -sf $(which python${PYTHON_VERSION}) ${PYTHON_BIN}
 RUN ln -sf $(which python${PYTHON_VERSION}) ${PYTHON_BIN}3
-RUN ln -sf $(which pip3) ${PIP_BIN}
 
 EXPOSE 8000
 
@@ -58,7 +57,6 @@ RUN groupadd --gid 1000 ${DEV_USER} \
 RUN chmod --recursive a+wrx /var/www/app
 RUN chmod a+wrx ${PYTHON_BIN}
 RUN chmod a+wrx ${PYTHON_BIN}3
-RUN chmod a+wrx ${PIP_BIN}
 
 # Copy Poetry configuration file
 COPY config/poetry/config.toml /root/.config/pypoetry/config.toml
@@ -85,4 +83,4 @@ LABEL maintainer="Julien M'Poy <julien.mpoy@gmail.com>" \
     org.opencontainers.image.title="Python Container" \
     org.opencontainers.image.url="https://github.com/groovytron/python-container" \
     org.opencontainers.image.vendor="Julien M'Poy <julien.mpoy@gmail.com>" \
-    org.opencontainers.image.version="3.6"
+    org.opencontainers.image.version="3.8"

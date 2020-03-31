@@ -308,6 +308,8 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/osx,vim,emacs,linux,python,windows,sublimetext,visualstudiocode
 
 # Tests generated files
+test_pipenv
+test_poetry
 testsite
 Pipfile
 Pipfile.lock
