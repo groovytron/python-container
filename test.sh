@@ -11,8 +11,11 @@ pip3 --version
 pipenv --version
 poetry --version
 
+# Create repository folders
+mkdir -p "$PIPENV_PROJECT_DIR" "$POETRY_PROJECT_DIR"
+
 # Pipenv test
-mkdir "$PIPENV_PROJECT_DIR" && (cd "$PIPENV_PROJECT_DIR" || exit 1)
+cd "$PIPENV_PROJECT_DIR"
 
 pipenv install django || exit 1
 echo 'Creating test django project with pipenv...'
@@ -20,10 +23,8 @@ echo 'Creating test django project with pipenv...'
 pipenv run django-admin startproject "$PROJECT_NAME" || exit 1
 echo 'Django project created with pipenv.'
 
-cd ..
-
 # Poetry test
-mkdir "$POETRY_PROJECT_DIR" && (cd "$POETRY_PROJECT_DIR" || exit 1)
+cd "../$POETRY_PROJECT_DIR"
 
 poetry init --no-interaction
 
@@ -32,5 +33,3 @@ echo 'Creating test django project using poetry...'
 
 poetry run django-admin startproject "$PROJECT_NAME" || exit 1
 echo 'Django project created with poetry.'
-
-cd ..
