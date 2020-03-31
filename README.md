@@ -30,9 +30,9 @@ To run the container and open a bash in your python project run the following co
 - You can install python packages using either `pip` or `pip3`
 - You can manage your dependencies using either `poetry` or `pipenv`
 
-**Note that as the `PIPENV_VENV_IN_PROJECT` environment variable is set, `pipenv` will create the virtual environment in a folder called `.venv` in your project directory.** This configuration is applied to `root` and `dev` users.
+**Note**: as the `PIPENV_VENV_IN_PROJECT` environment variable is set, `pipenv` will create the virtual environment in a folder called `.venv` in your project directory. This configuration is applied to `root` and `dev` users.
 
-**Note that as poetry's configuration is contained into <config/poetry/config.toml> and `virtualenvs.in-project` is set to `true`, `poetry` will create the virtual environment in a folder called `.venv` in your project directory.** This configuration is applied to `root` and `dev` users.
+**Note**: as poetry's configuration is contained into [config/poetry/config.toml](https://github.com/groovytron/python-container/blob/master/config/poetry/config.toml) and [`virtualenvs.in-project`](https://python-poetry.org/docs/configuration/#virtualenvsin-project-boolean) is set to `true`, `poetry` will create the virtual environment in a folder called `.venv` in your project directory. This configuration is applied to `root` and `dev` users.
 
 ## Contributing
 
