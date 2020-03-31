@@ -4,11 +4,13 @@ FROM ubuntu:bionic
 
 ARG PYTHON_VERSION
 ARG PIPENV_VERSION
+ARG POETRY_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHON_BIN=/usr/bin/python
 ENV PIP_BIN=/usr/bin/pip
 ENV PIPENV_VENV_IN_PROJECT=yes
+ENV DEV_USER=dev
 
 RUN apt-get update \
     && apt-get upgrade --quiet --yes \
@@ -18,13 +20,14 @@ RUN apt-get update \
         locales \
         python${PYTHON_VERSION} \
         python3-distutils \
+        python${PYTHON_VERSION}-venv \
         software-properties-common \
         tzdata \
         unzip \
     && apt-get autoremove --quiet --yes \
     && apt-get clean \
     && curl --silent https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION} \
-    && pip3 install pipenv==${PIPENV_VERSION}
+    && pip3 install pipenv==${PIPENV_VERSION} poetry==${POETRY_VERSION}
 
 # Set the locale
 RUN locale-gen en_US
@@ -47,13 +50,19 @@ EXPOSE 8000
 WORKDIR /var/www/app
 
 # Create less privileged user
-RUN groupadd --gid 1000 dev \
-  && useradd --uid 1000 --gid dev --shell /bin/bash --create-home dev
+RUN groupadd --gid 1000 ${DEV_USER} \
+  && useradd --uid 1000 --gid ${DEV_USER} --shell /bin/bash --create-home ${DEV_USER}
 
 # Fix permissions issues
 RUN chmod --recursive a+wrx /var/www/app
 RUN chmod a+wrx ${PYTHON_BIN}
 RUN chmod a+wrx ${PYTHON_BIN}3
+
+# Copy Poetry configuration file
+COPY config/poetry/config.toml /root/.config/pypoetry/config.toml
+COPY config/poetry/config.toml /home/${DEV_USER}/.config/pypoetry/config.toml
+RUN chmod -R 775 /root/.config
+RUN chown -R ${DEV_USER}:${DEV_USER} /home/${DEV_USER}/.config && chmod -R 775 /home/${DEV_USER}/.config
 
 # Label schema related variables and metadata
 ARG BUILD_DATE
