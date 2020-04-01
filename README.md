@@ -12,6 +12,11 @@ Docker container allowing you to build and test your Python project. _This conta
 
 [`poetry`](https://python-poetry.org/) is installed in every image to make Python dependencies installation easier. [`pipenv`](https://github.com/pypa/pipenv) is also installed if you prefer to use this solution for dependencies management.
 
+The following dependencies are installed to make wheel installation work properly:
+
+- [build-essentials](https://packages.ubuntu.com/bionic/build-essential) (`g++`, `gcc`, `make` and `libc6-dev`)
+- [python-dev](https://packages.ubuntu.com/bionic-updates/python3.8-dev) (header files and static library for Python)
+
 ## Use the container
 
 We recommend you use the `dev` user instead of `root` when running that container.

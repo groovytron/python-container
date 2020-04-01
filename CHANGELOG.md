@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.1
+
+- feature: add `publish` and `tag` targets to `Makefile` to make images publishing easier
+- fix: add `build-essentials` and Python header files and static library to improve compatibility with some wheels (eg. [thriftpy2](https://github.com/Thriftpy/thriftpy2) which needs gcc and Python header files)
+
 ## 2.0.0
 
 - feature: add image for Python 3.8 (issue #3)
