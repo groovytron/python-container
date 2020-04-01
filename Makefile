@@ -22,3 +22,7 @@ clean:
 	for VERSION in $(VERSIONS); do \
 		docker image rm -f $(COMPOSE_BUILD_NAME):$$VERSION; \
 	done
+
+.PHONY:clean-tests
+clean-test:
+	rm -rf test_pipenv test_poetry
