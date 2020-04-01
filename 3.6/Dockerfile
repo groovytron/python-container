@@ -16,10 +16,12 @@ RUN apt-get update \
     && apt-get upgrade --quiet --yes \
     && apt-get update --quiet \
     && apt-get install --quiet --yes \
+        build-essential \
         curl \
         locales \
         python${PYTHON_VERSION} \
-        python3-distutils \
+        python${PYTHON_VERSION}-dev \
+        python${PYTHON_VERSION}-distutils \
         python${PYTHON_VERSION}-venv \
         software-properties-common \
         tzdata \
