@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2
+
+- feature: add `git` to images
+- change: puslished images also have dated tags to keep images history
+
 ## 2.0.1
 
 - feature: add `publish` and `tag` targets to `Makefile` to make images publishing easier
