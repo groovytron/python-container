@@ -18,6 +18,7 @@ RUN apt-get update \
     && apt-get install --quiet --yes \
         build-essential \
         curl \
+        git \
         locales \
         python${PYTHON_VERSION} \
         python${PYTHON_VERSION}-dev \
