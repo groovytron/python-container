@@ -35,3 +35,14 @@ services:
         - POETRY_VERSION=1.0.5
         - PYTHON_VERSION=3.6
         - VCS_REF=$VCS_REF
+  python3.5:
+    image: ${COMPOSE_BUILD_NAME}:3.5
+    build:
+      dockerfile: 3.5/Dockerfile
+      context: .
+      args:
+        - BUILD_DATE=$BUILD_DATE
+        - PIPENV_VERSION=2018.11.26
+        - POETRY_VERSION=1.0.5
+        - PYTHON_VERSION=3.5
+        - VCS_REF=$VCS_REF

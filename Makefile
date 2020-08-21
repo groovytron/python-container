@@ -1,7 +1,7 @@
 BUILD_NAME=python
 OWNER=groovytron
 COMPOSE_BUILD_NAME=python-container
-VERSIONS=3.8 3.7 3.6
+VERSIONS=3.8 3.7 3.6 3.5
 LATEST=3.8
 LATEST_LABEL=latest
 ALL=$(addprefix python,$(VERSIONS))
