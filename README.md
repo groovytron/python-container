@@ -19,7 +19,7 @@ The following dependencies are installed to make wheel installation work properl
 
 ## Use the container
 
-We recommend you use the `dev` user instead of `root` when running that container.
+We recommend you to use the `dev` user instead of `root` when running that container.
 
 The container's working directory is `/var/www/app` so we advise you to mount your project directory onto this place.
 
@@ -45,7 +45,7 @@ Pull requests, bug reports, and feature requests are welcome.
 
 ### Develop locally
 
-If you want to improve one of these images, your will need the following software installed on your system:
+If you want to improve one of these images, you will need the following software installed on your system:
 
 - `docker`
 - `docker-compose` (if you want to build images using the file [build.yml](https://github.com/groovytron/python-container/blob/master/build.yml))
