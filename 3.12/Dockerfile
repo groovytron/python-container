@@ -44,10 +44,10 @@ RUN chown -R ${DEV_USER}:${DEV_USER} /home/${DEV_USER}/.config && chmod -R 775 /
 USER dev
 
 # Install Poetry
+ENV PATH="/home/${DEV_USER}/.local/bin:$PATH"
 ARG POETRY_VERSION
 RUN pipx install poetry=="${POETRY_VERSION}"
 
-ENV PATH="/home/${DEV_USER}/.local/bin:$PATH"
 
 # Label schema related variables and metadata
 ARG BUILD_DATE

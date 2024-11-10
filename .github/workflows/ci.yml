@@ -1,0 +1,45 @@
+name: Build Images
+on: [push]
+
+jobs:
+  build:
+    name: Build image
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date -u +'%Y-%m-%dT%H:%m:%SZ')"
+      - name: Buildah Action
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: python
+          tags: 3.12 3.12-${{ github.sha }}
+          containerfiles: |
+            ./3.12/Dockerfile
+          build-args: |
+            BUILD_DATE=${{ steps.date.outputs.date }}
+            VCS_REF=${{ github.sha }}
+            POETRY_VERSION=1.8.4
+      - name: Test the image
+        run: |
+          podman run \
+            -it \
+            --volume $(pwd):/var/www/app:rw \
+            --user dev \
+            localhost/python:3.12 \
+            bash ./test.sh
+      - name: Push To docker.io
+        id: push-to-dockerio
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: docker.io/groovytron
+          username: groovytron
+          password: ${{ secrets.REGISTRY_TOKEN }}
+
+      - name: Print image url
+        run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
