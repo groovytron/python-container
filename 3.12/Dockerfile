@@ -8,9 +8,13 @@ RUN apt-get update --yes --quiet \
 	build-essential \
         curl \
         git \
+	libpq-dev \
         locales \
 	pipx \
+	python3-dev \
 	tzdata \
+	unixodbc \
+	unixodbc-dev \
         unzip \
 	vim \
 	&& apt-get autoremove --quiet --yes \
