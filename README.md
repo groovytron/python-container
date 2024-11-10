@@ -1,16 +1,17 @@
 # Python container (Docker container for Python web development)
 
-[![Build Status](https://travis-ci.org/groovytron/python-container.svg?branch=master)](https://travis-ci.org/groovytron/python-container)
+[![Build Status](https://github.com/groovytron/python-container/actions/workflows/ci.yml/badge.svg)](https://github.com/groovytron/python-container/actions/workflows/ci.yml)
 
 Docker container allowing you to build and test your Python project. _This container mainly targets Python web project developments but you can try to make it work with your project even if your project is not using web technologies_.
 
 ## Supported tags and respective `Dockerfile` links
 
-- `3.8`, `latest` ([3.8/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.8/Dockerfile))
+- `3.12`, `latest` ([3.12/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.12/Dockerfile))
+- `3.8` ([3.8/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.8/Dockerfile))
 - `3.7` ([3.7/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.7/Dockerfile))
 - `3.6` ([3.6/Dockerfile](https://github.com/groovytron/python-container/blob/master/3.6/Dockerfile))
 
-[`poetry`](https://python-poetry.org/) is installed in every image to make Python dependencies installation easier. [`pipenv`](https://github.com/pypa/pipenv) is also installed if you prefer to use this solution for dependencies management.
+[`poetry`](https://python-poetry.org/) is installed in every image to make Python dependencies installation easier.
 
 The following dependencies are installed to make wheel installation work properly:
 
