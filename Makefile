@@ -46,3 +46,10 @@ publish: tag
 .PHONY:clean-tests
 clean-test:
 	rm -rf test_pipenv test_poetry
+
+.PHONY:build-3.12
+build-3.12:
+	buildah build -f 3.12/Dockerfile -t localhost/$(COMPOSE_BUILD_NAME):3.12 \
+		--build-arg BUILD_DATE=$(BUILD_DATE) \
+		--build-arg VCS_REF=$(VCS_REF) \
+		--build-arg POETRY_VERSION=1.8.4
