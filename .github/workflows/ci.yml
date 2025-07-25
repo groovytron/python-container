@@ -16,9 +16,9 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: python
-          tags: 3.12 3.12-${{ github.sha }}
+          tags: 3.13 3.13-${{ github.sha }}
           containerfiles: |
-            ./3.12/Dockerfile
+            ./3.13/Dockerfile
           build-args: |
             BUILD_DATE=${{ steps.date.outputs.date }}
             VCS_REF=${{ github.sha }}
@@ -29,7 +29,7 @@ jobs:
             -it \
             --volume $(pwd):/var/www/app:rw \
             --user dev \
-            localhost/python:3.12 \
+            localhost/python:3.13 \
             bash ./test.sh
       - name: Push To docker.io
         id: push-to-dockerio
