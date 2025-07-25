@@ -1,8 +1,8 @@
 BUILD_NAME=python
 OWNER=groovytron
 COMPOSE_BUILD_NAME=python-container
-VERSIONS=3.8 3.7 3.6
-LATEST=3.8
+VERSIONS=3.13 3.12 3.8 3.7 3.6
+LATEST=3.13
 LATEST_LABEL=latest
 ALL=$(addprefix python,$(VERSIONS))
 VCS_REF="$(shell git rev-parse HEAD)"
